@@ -1,9 +1,18 @@
+# IntelliJ Idea files
+.idea
 *.ipr
 *.iws
 *.iml
+
+# Gradle
 .gradle
-out
-target
 build
+
+# Eclipse files
+out
+
+# Pact output files
+target
+
 foo-consumer-version
 
