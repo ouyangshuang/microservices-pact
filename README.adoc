@@ -64,7 +64,7 @@ $ gradle assemble
 . Next, in one terminal window, start up the provider app:
 +
 ----
-$ java -jar microservices-pact-provider/build/libs/microservices-pact-provider-0.0.1-SNAPSHOT.jar
+$ java -jar microservices-pact-provider/build/libs/microservices-pact-provider-0.0.2-SNAPSHOT.jar
 ----
 
 . Then, in another terminal window, run the pact verification:

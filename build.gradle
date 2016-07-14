@@ -26,18 +26,12 @@ allprojects {
         maven { url "https://repo.spring.io/milestone" }
     }
 
-    ext {
-        versionFilePath = "$System.env.VERSION_FILE_PATH"
-    }
-
-    task loadVersion {
-        ext.myVersion = new File("${versionFilePath}/number").text
-    }
+    version = '0.0.2-SNAPSHOT'
 
     task manifestFilter(type: Copy) {
         from 'manifest.yml'
         into 'versioned-manifest'
-        expand(version: "${loadVersion.myVersion}")
+        expand(version: "${version}")
     }
 
 }
@@ -58,10 +52,6 @@ subprojects {
 project(':microservices-pact-consumer') {
     jar {
         baseName = 'microservices-pact-consumer'
-    }
-
-    jar.doFirst {
-        version = new File("${versionFilePath}/number").text
     }
 }
 
@@ -89,10 +79,6 @@ project(':microservices-pact-provider') {
 
     jar {
         baseName = 'microservices-pact-provider'
-    }
-
-    jar.doFirst {
-        version = new File("${versionFilePath}/number").text
     }
 
     pact {
