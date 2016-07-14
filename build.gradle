@@ -53,6 +53,10 @@ project(':microservices-pact-consumer') {
     jar {
         baseName = 'microservices-pact-consumer'
     }
+
+    clean {
+        delete 'target/pacts'
+    }
 }
 
 
@@ -95,5 +99,5 @@ project(':microservices-pact-provider') {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.14'
 }
