@@ -64,10 +64,6 @@ project(':microservices-pact-provider') {
     apply plugin: 'au.com.dius.pact'
     apply plugin: 'com.github.johnrengelman.processes'
 
-    ext {
-        pactFilePath = "$System.env.PACT_FILE"
-    }
-
     task startProvider(type: com.github.jengelman.gradle.plugins.processes.tasks.JavaFork) {
         classpath = files("microservices-pact-provider/build/libs/microservices-pact-provider-${version}.jar")
         classpath += sourceSets.main.runtimeClasspath
@@ -90,8 +86,8 @@ project(':microservices-pact-provider') {
             fooProvider {
                 startProviderTask = 'startProvider'
                 terminateProviderTask = 'stopProvider'
-                hasPactWith('fooConsumer') {
-                    pactFile = file(pactFilePath)
+                hasPactsWith('fooConsumer') {
+                    pactFileLocation = project(':microservices-pact-consumer').file('target/pacts')
                 }
             }
         }
