@@ -25,10 +25,12 @@ $ gradle test
     "name" : "Foo_Consumer"
   },
   "interactions" : [ {
+    "providerState" : "Foo_State",
     "description" : "a request for Foos",
     "request" : {
       "method" : "GET",
-      "path" : "/foos"
+      "path" : "/foos",
+      "body" : null
     },
     "response" : {
       "status" : 200,
@@ -47,7 +49,7 @@ $ gradle test
       "version" : "2.0.0"
     },
     "pact-jvm" : {
-      "version" : "2.1.7"
+      "version" : "3.2.9"
     }
   }
 }
@@ -61,13 +63,7 @@ By virtue of the fact that these tests pass, we know that the `microservices-pac
 $ gradle assemble
 ----
 
-. Next, in one terminal window, start up the provider app:
-+
-----
-$ java -jar microservices-pact-provider/build/libs/microservices-pact-provider-0.0.2-SNAPSHOT.jar
-----
-
-. Then, in another terminal window, run the pact verification:
+. Then, run the pact verification:
 +
 ----
 $ gradle pactVerify

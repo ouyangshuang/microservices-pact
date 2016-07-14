@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath('com.github.jengelman.gradle.plugins:gradle-processes:0.3.0')
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath 'au.com.dius:pact-jvm-provider-gradle_2.11:2.1.13'
+        classpath 'au.com.dius:pact-jvm-provider-gradle_2.11:3.2.9'
     }
 }
 
@@ -45,7 +45,7 @@ subprojects {
     dependencies {
         compile("org.springframework.boot:spring-boot-starter-web")
         testCompile("org.springframework.boot:spring-boot-starter-test")
-        testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:2.1.13")
+        testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.2.9")
     }
 }
 
@@ -86,7 +86,7 @@ project(':microservices-pact-provider') {
             fooProvider {
                 startProviderTask = 'startProvider'
                 terminateProviderTask = 'stopProvider'
-                hasPactsWith('fooConsumer') {
+                hasPactsWith('Foo_Consumer') {
                     pactFileLocation = project(':microservices-pact-consumer').file('target/pacts')
                 }
             }
